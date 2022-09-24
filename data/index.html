@@ -1,0 +1,56 @@
+
+        <!DOCTYPE HTML><html>
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+          <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+       
+        <body>
+          <h2>Webportal Demo:</h2>
+          <p>
+             Hi, these inputs are available.
+          </p>
+          
+          <p>
+            <form  action='\get' >
+              input1:<input type="text" name="input1">
+              <input type="submit" value="Submit",  onclick="submitMessage()">
+              <br>
+            </form>
+            <form  action='\get' >
+              <input type="submit" name="button" value="Button" onclick="ButtonClick()"/>
+              <input type="hidden" id="input2" name="input2", value=%BUTTON%  >
+          </form>
+          </p>
+          <p id="subtext"> Current state: %STATE% </p>
+        </body>
+
+        <script>
+        
+        function submitMessage() {
+            alert("Saved value to ESP SPIFFS");       
+            setTimeout(() => {
+              document.location.reload();
+            }, 300)
+          }
+
+          function ButtonClick() {
+
+            var x = document.getElementById("input2");
+            if(x.value != "On"){
+              x.setAttribute("value", "On");
+            }
+            else if(x.value == "On"){
+              x.setAttribute("value", "Off");
+            }
+            alert("Saved value to ESP SPIFFS");  
+
+            setTimeout(() => {
+              document.location.reload(true);
+            }, 300)
+          }
+
+
+        </script>
+</html>
